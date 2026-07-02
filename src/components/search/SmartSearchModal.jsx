@@ -11,7 +11,7 @@ function SmartSearchModal({ open, onOpenChange }) {
       open={open}
       onOpenChange={onOpenChange}
     >
-      <DialogContent className="max-w-3xl rounded-[64px] border-0 bg-white p-10 shadow-2xl">
+      <DialogContent className="max-w-3xl rounded-[32px] border-0 bg-white p-10 shadow-2xl">
 
         <SearchProgress
           step={1}
