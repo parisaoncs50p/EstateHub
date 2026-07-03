@@ -1,7 +1,7 @@
 
 import properties from "../../data/properties";
-import PropertyCard from "../property/PropertyCard";
-import PropertySection from "../property/PropertySection";
+import PropertyCard from "./PropertyCard";
+import PropertySection from "./PropertySection";
 
 function FeaturedProperties() {
   return (
