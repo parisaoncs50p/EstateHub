@@ -1,32 +1,57 @@
 
+import { Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 
-import Hero from "./components/home/Hero";
-import WhyChooseUs from "./components/home/WhyChooseUs";
-import Statistics from "./components/home/Statistics";
-import Testimonials from "./components/home/Testimonials";
-
-import FeaturedProperties from "./components/property/FeaturedProperties";
-
-import PopularCities from "./components/city/PopularCities";
+import Home from "./pages/Home";
+import Properties from "./pages/Properties";
+import PropertyDetails from "./pages/PropertyDetails";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import AddProperty from "./pages/AddProperty";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
     <>
       <Navbar />
 
-      <Hero />
+      <Routes>
 
-      <FeaturedProperties />
+        <Route path="/" element={<Home />} />
 
-      <WhyChooseUs />
+        <Route
+          path="/properties"
+          element={<Properties />}
+        />
 
-      <PopularCities />
+        <Route
+          path="/property/:id"
+          element={<PropertyDetails />}
+        />
 
-      <Statistics />
+        <Route
+          path="/login"
+          element={<Login />}
+        />
 
-      <Testimonials />
+        <Route
+          path="/register"
+          element={<Register />}
+        />
+
+        <Route
+          path="/add-property"
+          element={<AddProperty />}
+        />
+
+        <Route
+          path="*"
+          element={<NotFound />}
+        />
+
+      </Routes>
 
       <Footer />
     </>
