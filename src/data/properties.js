@@ -1,4 +1,5 @@
 
+// Agent
 import property1 from "../assets/images/properties/property1.jpg";
 import property2 from "../assets/images/properties/property2.jpg";
 import property3 from "../assets/images/properties/property3.jpg";
@@ -52,6 +53,19 @@ const properties = [
       property1_3,
       property1_4,
     ],
+
+    location: {
+  lat: 35.8036,
+  lng: 51.4257,
+},
+    features: [
+  "آسانسور",
+  "استخر",
+  "بالکن",
+  "پارکینگ",
+  "نگهبانی",
+  "اینترنت",
+],
     title: "آپارتمان لوکس زعفرانیه",
     city: "تهران",
     area: 185,
@@ -73,6 +87,20 @@ const properties = [
       property2_3,
       property2_4,
     ],
+
+    location: {
+    lat: 36.9094,
+    lng: 50.6736,
+  },
+
+  features: [
+    "استخر",
+    "حیاط",
+    "پارکینگ",
+    "نگهبانی",
+    "بالکن",
+    "انباری",
+  ],
     title: "ویلای استخردار",
     city: "رامسر",
     area: 420,
@@ -94,6 +122,20 @@ const properties = [
       property3_3,
       property3_4,
     ],
+
+   location: {
+  lat: 32.6546,
+  lng: 51.6680,
+},
+
+ features: [
+  "آسانسور",
+  "پارکینگ",
+  "انباری",
+  "بالکن",
+  "کمد دیواری",
+  "لابی",
+],
     title: "آپارتمان مدرن",
     city: "اصفهان",
     area: 140,
@@ -115,6 +157,20 @@ const properties = [
       property4_3,
       property4_4,
     ],
+
+    location: {
+  lat: 35.7608,
+  lng: 51.4125,
+},
+
+features: [
+  "جکوزی",
+  "هوشمندسازی",
+  "آسانسور",
+  "پارکینگ",
+  "تراس",
+  "لابی",
+],
     title: "پنت هاوس VIP",
     city: "تهران",
     area: 310,
@@ -136,6 +192,20 @@ const properties = [
       property5_3,
       property5_4,
     ],
+
+    location: {
+  lat: 26.5320,
+  lng: 53.9802,
+},
+
+features: [
+  "استخر",
+  "ساحل اختصاصی",
+  "پارکینگ",
+  "فضای سبز",
+  "باربیکیو",
+  "نگهبانی",
+],
     title: "ویلای ساحلی",
     city: "کیش",
     area: 520,
@@ -157,6 +227,20 @@ const properties = [
       property6_3,
       property6_4,
     ],
+
+    location: {
+  lat: 29.5918,
+  lng: 52.5837,
+},
+
+features: [
+  "آسانسور",
+  "انباری",
+  "پارکینگ",
+  "بالکن",
+  "کابینت MDF",
+  "درب ضدسرقت",
+],
     title: "آپارتمان نوساز",
     city: "شیراز",
     area: 155,

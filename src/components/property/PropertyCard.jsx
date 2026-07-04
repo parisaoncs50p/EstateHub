@@ -1,10 +1,11 @@
 
+import FavoriteButton from "./FavoriteButton";
 import {
   BedDouble,
   Bath,
   Car,
-  MapPin,
-  Heart,
+  MapPin
+  
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
@@ -32,12 +33,12 @@ function PropertyCard({ property }) {
             <PropertyBadge text={property.type} />
           </div>
 
-          <button
-            onClick={(e) => e.preventDefault()}
-            className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center rounded-full bg-white/80 backdrop-blur transition hover:bg-red-500 hover:text-white"
-          >
-            <Heart size={20} />
-          </button>
+          <div className="absolute left-5 top-5">
+            <FavoriteButton
+                propertyId={property.id}
+                insideLink={true}
+            />  
+        </div>
 
         </div>
 

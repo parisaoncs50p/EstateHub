@@ -6,22 +6,21 @@ import {
   Phone,
   User,
   CirclePlus,
+  Heart,
 } from "lucide-react";
 
 import Logo from "../common/Logo";
 
 function Navbar() {
   return (
-    <header className="fixed top-0 left-0 z-50 w-full">
+    <header className="relative w-full">
       <div className="mx-auto max-w-7xl px-6 py-5">
         <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-black/25 px-8 py-4 backdrop-blur-xl">
 
           {/* لوگو */}
-
           <Logo />
 
           {/* منو */}
-
           <nav className="hidden items-center gap-8 md:flex">
 
             <Link
@@ -38,6 +37,14 @@ function Navbar() {
             >
               <Building2 size={18} />
               املاک
+            </Link>
+
+            <Link
+              to="/favorites"
+              className="flex items-center gap-2 text-white transition hover:text-red-400"
+            >
+              <Heart size={18} />
+              علاقه‌مندی‌ها
             </Link>
 
             <Link
@@ -59,7 +66,6 @@ function Navbar() {
           </nav>
 
           {/* دکمه ورود */}
-
           <Link
             to="/login"
             className="rounded-xl bg-amber-500 px-6 py-3 font-bold text-white transition duration-300 hover:scale-105 hover:bg-amber-600"
