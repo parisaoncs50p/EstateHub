@@ -17,7 +17,7 @@ function PageNavbar() {
 
       <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-6">
 
-        <Logo />
+        <Logo dark/>
 
         <nav className="hidden items-center gap-8 md:flex">
 
