@@ -1,8 +1,8 @@
 
-import { Routes, Route, useLocation } from "react-router-dom";
+import Contact from "./pages/Contact";
+import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/layout/Navbar";
-import MainNavbar from "./components/layout/MainNavbar";
 import Footer from "./components/layout/Footer";
 
 import Home from "./pages/Home";
@@ -15,16 +15,15 @@ import AddProperty from "./pages/AddProperty";
 import NotFound from "./pages/NotFound";
 
 function App() {
-  const location = useLocation();
-
-  const isHome = location.pathname === "/";
-
   return (
     <>
-      {isHome ? <Navbar /> : <MainNavbar />}
+      <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={<Home />}
+        />
 
         <Route
           path="/properties"
@@ -55,6 +54,9 @@ function App() {
           path="/add-property"
           element={<AddProperty />}
         />
+
+
+        <Route path="/contact" element={<Contact />} />
 
         <Route
           path="*"

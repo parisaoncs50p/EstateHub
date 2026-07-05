@@ -53,7 +53,7 @@ const properties = [
       property1_3,
       property1_4,
     ],
-
+    category: "آپارتمان",
     location: {
   lat: 35.8036,
   lng: 51.4257,
@@ -87,6 +87,8 @@ const properties = [
       property2_3,
       property2_4,
     ],
+
+    category: "ویلا",
 
     location: {
     lat: 36.9094,
@@ -123,6 +125,8 @@ const properties = [
       property3_4,
     ],
 
+    category: "آپارتمان",
+
    location: {
   lat: 32.6546,
   lng: 51.6680,
@@ -157,6 +161,8 @@ const properties = [
       property4_3,
       property4_4,
     ],
+
+    category: "آپارتمان",
 
     location: {
   lat: 35.7608,
@@ -193,6 +199,8 @@ features: [
       property5_4,
     ],
 
+    category: "ویلا",
+
     location: {
   lat: 26.5320,
   lng: 53.9802,
@@ -227,6 +235,8 @@ features: [
       property6_3,
       property6_4,
     ],
+
+    category: "آپارتمان",
 
     location: {
   lat: 29.5918,

@@ -1,4 +1,5 @@
 
+import { Toaster } from "react-hot-toast";
 import "leaflet/dist/leaflet.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -12,5 +13,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <App />
     </BrowserRouter>
+    <Toaster
+        position="top-center"
+        reverseOrder={false}
+     />
   </React.StrictMode>
 );

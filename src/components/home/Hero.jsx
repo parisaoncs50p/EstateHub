@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import heroImage from "../../assets/images/hero2.png";
 import SmartSearchModal from "../search/SmartSearchModal";
 
@@ -43,9 +44,12 @@ function Hero() {
                   شروع جستجوی هوشمند
                 </button>
 
-                <button className="rounded-2xl border border-white/30 bg-white/10 px-8 py-4 text-white backdrop-blur-md transition hover:bg-white hover:text-black">
+                <Link
+                  to="/properties"
+                  className="rounded-2xl border border-white/30 bg-white/10 px-8 py-4 text-white backdrop-blur-md transition duration-300 hover:scale-105 hover:bg-white hover:text-black"
+                >
                   مشاهده املاک
-                </button>
+                </Link>
               </div>
             </div>
           </div>

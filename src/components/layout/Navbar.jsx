@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   House,
   Building2,
@@ -12,20 +12,39 @@ import {
 import Logo from "../common/Logo";
 
 function Navbar() {
-  return (
-    <header className="relative w-full">
-      <div className="mx-auto max-w-7xl px-6 py-5">
-        <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-black/25 px-8 py-4 backdrop-blur-xl">
+  const location = useLocation();
 
-          {/* لوگو */}
+  const isHome = location.pathname === "/";
+
+  return (
+    <header
+      className={
+        isHome
+          ? "fixed top-0 left-0 z-[9999] w-full"
+          : "relative z-50 w-full bg-white shadow-lg"
+      }
+    >
+      <div className="mx-auto max-w-7xl px-6 py-5">
+
+        <div
+          className={
+            isHome
+              ? "flex items-center justify-between rounded-2xl border border-white/10 bg-black/25 px-8 py-4 backdrop-blur-xl"
+              : "flex items-center justify-between rounded-2xl px-8 py-4"
+          }
+        >
+
           <Logo />
 
-          {/* منو */}
           <nav className="hidden items-center gap-8 md:flex">
 
             <Link
               to="/"
-              className="flex items-center gap-2 text-white transition hover:text-amber-400"
+              className={
+                isHome
+                  ? "flex items-center gap-2 text-white transition hover:text-amber-400"
+                  : "flex items-center gap-2 text-slate-700 transition hover:text-amber-500"
+              }
             >
               <House size={18} />
               خانه
@@ -33,7 +52,11 @@ function Navbar() {
 
             <Link
               to="/properties"
-              className="flex items-center gap-2 text-white transition hover:text-amber-400"
+              className={
+                isHome
+                  ? "flex items-center gap-2 text-white transition hover:text-amber-400"
+                  : "flex items-center gap-2 text-slate-700 transition hover:text-amber-500"
+              }
             >
               <Building2 size={18} />
               املاک
@@ -41,7 +64,11 @@ function Navbar() {
 
             <Link
               to="/favorites"
-              className="flex items-center gap-2 text-white transition hover:text-red-400"
+              className={
+                isHome
+                  ? "flex items-center gap-2 text-white transition hover:text-red-400"
+                  : "flex items-center gap-2 text-slate-700 transition hover:text-red-500"
+              }
             >
               <Heart size={18} />
               علاقه‌مندی‌ها
@@ -49,7 +76,11 @@ function Navbar() {
 
             <Link
               to="/add-property"
-              className="flex items-center gap-2 text-white transition hover:text-amber-400"
+              className={
+                isHome
+                  ? "flex items-center gap-2 text-white transition hover:text-amber-400"
+                  : "flex items-center gap-2 text-slate-700 transition hover:text-amber-500"
+              }
             >
               <CirclePlus size={18} />
               ثبت آگهی
@@ -57,7 +88,11 @@ function Navbar() {
 
             <Link
               to="/contact"
-              className="flex items-center gap-2 text-white transition hover:text-amber-400"
+              className={
+                isHome
+                  ? "flex items-center gap-2 text-white transition hover:text-amber-400"
+                  : "flex items-center gap-2 text-slate-700 transition hover:text-amber-500"
+              }
             >
               <Phone size={18} />
               تماس با ما
@@ -65,7 +100,6 @@ function Navbar() {
 
           </nav>
 
-          {/* دکمه ورود */}
           <Link
             to="/login"
             className="rounded-xl bg-amber-500 px-6 py-3 font-bold text-white transition duration-300 hover:scale-105 hover:bg-amber-600"
@@ -77,6 +111,7 @@ function Navbar() {
           </Link>
 
         </div>
+
       </div>
     </header>
   );
