@@ -1,4 +1,6 @@
 
+import { useAuth } from "../../context/useAuth";
+
 import { Link, useLocation } from "react-router-dom";
 import {
   House,
@@ -7,20 +9,27 @@ import {
   User,
   CirclePlus,
   Heart,
+  LayoutDashboard,
+  LogOut,
 } from "lucide-react";
 
 import Logo from "../common/Logo";
 
 function Navbar() {
   const location = useLocation();
+  const { isLogin, logout } = useAuth();
 
+  
   const isHome = location.pathname === "/";
+
+  // بعدا از بک‌اند میاد
+  
 
   return (
     <header
       className={
         isHome
-          ? "fixed top-0 left-0 z-[9999] w-full"
+          ? "fixed top-0 left-0 z-50 w-full"
           : "relative z-50 w-full bg-white shadow-lg"
       }
     >
@@ -42,8 +51,8 @@ function Navbar() {
               to="/"
               className={
                 isHome
-                  ? "flex items-center gap-2 text-white transition hover:text-amber-400"
-                  : "flex items-center gap-2 text-slate-700 transition hover:text-amber-500"
+                  ? "flex items-center gap-2 text-white hover:text-amber-400"
+                  : "flex items-center gap-2 text-slate-700 hover:text-amber-500"
               }
             >
               <House size={18} />
@@ -54,8 +63,8 @@ function Navbar() {
               to="/properties"
               className={
                 isHome
-                  ? "flex items-center gap-2 text-white transition hover:text-amber-400"
-                  : "flex items-center gap-2 text-slate-700 transition hover:text-amber-500"
+                  ? "flex items-center gap-2 text-white hover:text-amber-400"
+                  : "flex items-center gap-2 text-slate-700 hover:text-amber-500"
               }
             >
               <Building2 size={18} />
@@ -66,8 +75,8 @@ function Navbar() {
               to="/favorites"
               className={
                 isHome
-                  ? "flex items-center gap-2 text-white transition hover:text-red-400"
-                  : "flex items-center gap-2 text-slate-700 transition hover:text-red-500"
+                  ? "flex items-center gap-2 text-white hover:text-red-400"
+                  : "flex items-center gap-2 text-slate-700 hover:text-red-500"
               }
             >
               <Heart size={18} />
@@ -75,11 +84,11 @@ function Navbar() {
             </Link>
 
             <Link
-              to="/add-property"
+              to="/dashboard/add-property"
               className={
                 isHome
-                  ? "flex items-center gap-2 text-white transition hover:text-amber-400"
-                  : "flex items-center gap-2 text-slate-700 transition hover:text-amber-500"
+                  ? "flex items-center gap-2 text-white hover:text-amber-400"
+                  : "flex items-center gap-2 text-slate-700 hover:text-amber-500"
               }
             >
               <CirclePlus size={18} />
@@ -90,8 +99,8 @@ function Navbar() {
               to="/contact"
               className={
                 isHome
-                  ? "flex items-center gap-2 text-white transition hover:text-amber-400"
-                  : "flex items-center gap-2 text-slate-700 transition hover:text-amber-500"
+                  ? "flex items-center gap-2 text-white hover:text-amber-400"
+                  : "flex items-center gap-2 text-slate-700 hover:text-amber-500"
               }
             >
               <Phone size={18} />
@@ -100,17 +109,46 @@ function Navbar() {
 
           </nav>
 
+          <div className="flex items-center gap-3">
+
+
+        {isLogin ? (
+          <>
+            <Link
+              to="/dashboard"
+              className="flex items-center gap-2 rounded-xl bg-amber-500 px-5 py-3 font-bold text-white transition hover:bg-amber-600"
+            >
+              <LayoutDashboard size={18} />
+              پنل کاربری
+            </Link>
+
+      <button
+        onClick={logout}
+        className="flex items-center gap-2 rounded-xl border border-red-400 px-5 py-3 font-bold text-red-500 transition hover:bg-red-50"
+      >
+        <LogOut size={18} />
+        خروج
+      </button>
+          </>
+        ) : (
           <Link
             to="/login"
-            className="rounded-xl bg-amber-500 px-6 py-3 font-bold text-white transition duration-300 hover:scale-105 hover:bg-amber-600"
+            className="rounded-xl bg-amber-500 px-6 py-3 font-bold text-white transition hover:bg-amber-600 hover:scale-105"
           >
             <span className="flex items-center gap-2">
               <User size={18} />
               ورود
             </span>
           </Link>
+        )}
 
-        </div>
+      </div>
+               
+
+            
+          
+
+           </div>
 
       </div>
     </header>

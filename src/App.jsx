@@ -1,6 +1,12 @@
 
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import Dashboard from "./pages/Dashboard";
+import DashboardHome from "./pages/DashboardHome";
+import Profile from "./pages/Profile";
+import MyProperties from "./pages/MyProperties";
 import Contact from "./pages/Contact";
 import { Routes, Route } from "react-router-dom";
+import VerifyCode from "./pages/VerifyCode";
 
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -49,14 +55,34 @@ function App() {
           path="/register"
           element={<Register />}
         />
-
         <Route
-          path="/add-property"
-          element={<AddProperty />}
+          path="/verify"
+          element={<VerifyCode />}
         />
 
 
+
         <Route path="/contact" element={<Contact />} />
+
+        <Route
+          path="/dashboard/*"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<DashboardHome />} />
+
+          <Route path="profile" element={<Profile />} />
+
+          <Route path="properties" element={<MyProperties />} />
+
+          <Route path="add-property" element={<AddProperty />} />
+
+          <Route path="edit-property/:id" element={<AddProperty />} />
+        </Route>
+
 
         <Route
           path="*"

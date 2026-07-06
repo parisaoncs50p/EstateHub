@@ -1,23 +1,14 @@
 
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import PropertyLocationPicker from "../components/property/PropertyLocationPicker";
 
 function AddProperty() {
-  const featureList = [
-    "آسانسور",
-    "پارکینگ",
-    "استخر",
-    "انباری",
-    "بالکن",
-    "نگهبانی",
-    "لابی",
-    "جکوزی",
-    "اینترنت",
-    "هوشمندسازی",
-    "فضای سبز",
-    "باربیکیو",
-  ];
+  const { id } = useParams();
+
+  const editing = Boolean(id);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -40,6 +31,46 @@ function AddProperty() {
   });
 
   const [images, setImages] = useState([]);
+  const featureList = [
+  "آسانسور",
+  "پارکینگ",
+  "استخر",
+  "انباری",
+  "بالکن",
+  "نگهبانی",
+  "لابی",
+  "جکوزی",
+  "اینترنت",
+  "هوشمندسازی",
+  "فضای سبز",
+  "باربیکیو",
+];
+
+useEffect(() => {
+  if (!editing) return;
+
+  const property = {
+    title: "آپارتمان ۱۲۰ متری",
+    city: "تهران",
+    category: "آپارتمان",
+    type: "فروش",
+    area: 120,
+    bedrooms: 3,
+    bathrooms: 2,
+    parking: 1,
+    price: "8500000000",
+    description: "ملک بسیار شیک و نوساز",
+    features: ["پارکینگ", "آسانسور", "انباری"],
+    location: {
+      lat: 35.7219,
+      lng: 51.3347,
+    },
+  };
+
+
+
+  setFormData(property);
+}, [editing]);
 
   const handleChange = (e) => {
     setFormData({
@@ -117,15 +148,20 @@ function AddProperty() {
     console.log(formData.features);
     console.log(formData.location);
 
-    toast.success("آگهی با موفقیت آماده ارسال شد.");
+    if (editing) {
+  toast.success("تغییرات با موفقیت ذخیره شد.");
+} else {
+  toast.success("آگهی با موفقیت ثبت شد.");
+}
   };
+  
 
   return (<section className="min-h-screen bg-slate-100 pt-36 pb-20">
 
   <div className="mx-auto max-w-5xl rounded-3xl bg-white p-10 shadow-xl">
 
     <h1 className="mb-10 text-center text-4xl font-black">
-      ثبت آگهی جدید
+      {editing ? "ویرایش آگهی" : "ثبت آگهی جدید"}
     </h1>
 
     <form
@@ -299,6 +335,7 @@ function AddProperty() {
 
         <PropertyLocationPicker
           onLocationChange={handleLocation}
+          initialLocation={formData.location}
         />
 
         {formData.location.lat && (
@@ -344,7 +381,7 @@ function AddProperty() {
         type="submit"
         className="rounded-2xl bg-amber-500 py-4 text-xl font-black text-white transition duration-300 hover:bg-amber-600 hover:scale-[1.02] md:col-span-2"
       >
-        ثبت آگهی
+       {editing ? "ذخیره تغییرات" : "ثبت آگهی"}
       </button>
 
     </form>

@@ -1,26 +1,80 @@
 
-import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  useMapEvents,
+  useMap,
+} from "react-leaflet";
 
-function LocationMarker({ onSelect }) {
-  const [position, setPosition] = useState(null);
+function ChangeView({ position }) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (position) {
+      map.setView(position, 15);
+    }
+  }, [position, map]);
+
+  return null;
+}
+
+function LocationMarker({
+  onSelect,
+  initialLocation,
+}) {
+  const [position, setPosition] = useState(
+    initialLocation?.lat && initialLocation?.lng
+      ? [initialLocation.lat, initialLocation.lng]
+      : null
+  );
+
+  useEffect(() => {
+    if (
+      initialLocation?.lat &&
+      initialLocation?.lng
+    ) {
+      setPosition([
+        initialLocation.lat,
+        initialLocation.lng,
+      ]);
+    }
+  }, [initialLocation]);
 
   useMapEvents({
     click(e) {
       setPosition(e.latlng);
-      onSelect(e.latlng);
+
+      onSelect({
+        lat: e.latlng.lat,
+        lng: e.latlng.lng,
+      });
     },
   });
 
-  return position ? <Marker position={position} /> : null;
+  return (
+    <>
+      <ChangeView position={position} />
+
+      {position && <Marker position={position} />}
+    </>
+  );
 }
 
-function PropertyLocationPicker({ onLocationChange }) {
+function PropertyLocationPicker({
+  onLocationChange,
+  initialLocation,
+}) {
   return (
     <div className="overflow-hidden rounded-2xl border">
 
       <MapContainer
-        center={[35.6892, 51.389]}
+        center={
+          initialLocation?.lat
+            ? [initialLocation.lat, initialLocation.lng]
+            : [35.6892, 51.389]
+        }
         zoom={11}
         style={{
           height: "420px",
@@ -35,6 +89,7 @@ function PropertyLocationPicker({ onLocationChange }) {
 
         <LocationMarker
           onSelect={onLocationChange}
+          initialLocation={initialLocation}
         />
 
       </MapContainer>

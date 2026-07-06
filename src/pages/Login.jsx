@@ -1,182 +1,151 @@
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
-  Mail,
-  Lock,
-  Eye,
-  EyeOff,
-  LogIn,
+  Phone,
+  Send,
+  Building2,
+  ShieldCheck,
 } from "lucide-react";
 
+import heroImage from "../assets/images/hero2.png";
+
 function Login() {
-  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-    remember: false,
-  });
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-
-    setForm({
-      ...form,
-      [name]: type === "checkbox" ? checked : value,
-    });
-  };
+  const [phone, setPhone] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(form);
+    if (phone.length !== 11) {
+      alert("شماره موبایل معتبر وارد کنید.");
+      return;
+    }
 
-    alert("در نسخه بعد به بک‌اند متصل می‌شود.");
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      navigate("/verify");
+    }, 1200);
   };
 
   return (
-    <section className="flex min-h-screen items-center justify-center bg-slate-100 px-6 py-20">
+    <section
+      className="relative flex min-h-screen items-center justify-center bg-cover bg-center px-6"
+      style={{
+        backgroundImage: `url(${heroImage})`,
+      }}
+    >
+      {/* Overlay */}
 
-      <div className="w-full max-w-md rounded-3xl bg-white p-10 shadow-2xl">
+      <div className="absolute inset-0 bg-black/65"></div>
 
-        <div className="mb-10 text-center">
+      {/* Card */}
 
-          <h1 className="text-4xl font-black text-slate-800">
-            ورود
+      <div className="relative z-10 w-full max-w-md overflow-hidden rounded-[32px] border border-white/20 bg-white/10 backdrop-blur-2xl shadow-2xl">
+
+        {/* Header */}
+
+        <div className="flex flex-col items-center px-10 pt-12">
+
+          <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-amber-500 shadow-xl">
+
+            <Building2
+              size={42}
+              className="text-white"
+            />
+
+          </div>
+
+          <h1 className="mt-6 text-4xl font-black text-white">
+            EstateHub
           </h1>
 
-          <p className="mt-3 text-slate-500">
-            وارد حساب کاربری خود شوید
+          <p className="mt-2 text-center text-slate-200">
+            ورود به حساب کاربری
           </p>
 
         </div>
 
+        {/* Form */}
+
         <form
           onSubmit={handleSubmit}
-          className="space-y-6"
+          className="space-y-8 px-10 py-10"
         >
 
-          {/* Email */}
-
           <div>
 
-            <label className="mb-2 block font-bold">
-              ایمیل
+            <label className="mb-3 block font-bold text-white">
+              شماره موبایل
             </label>
 
             <div className="relative">
 
-              <Mail
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400"
+              <Phone
                 size={20}
+                className="absolute right-5 top-1/2 -translate-y-1/2 text-white/70"
               />
 
               <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                placeholder="example@email.com"
-                className="h-14 w-full rounded-2xl border border-slate-300 pr-12 pl-4 outline-none transition focus:border-amber-500"
-              />
-
-            </div>
-
-          </div>
-
-          {/* Password */}
-
-          <div>
-
-            <label className="mb-2 block font-bold">
-              رمز عبور
-            </label>
-
-            <div className="relative">
-
-              <Lock
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400"
-                size={20}
-              />
-
-              <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                value={form.password}
-                onChange={handleChange}
-                placeholder="********"
-                className="h-14 w-full rounded-2xl border border-slate-300 pr-12 pl-12 outline-none transition focus:border-amber-500"
-              />
-
-              <button
-                type="button"
-                onClick={() =>
-                  setShowPassword(!showPassword)
+                type="tel"
+                dir="ltr"
+                maxLength={11}
+                value={phone}
+                onChange={(e) =>
+                  setPhone(e.target.value)
                 }
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
-              >
-                {showPassword ? (
-                  <EyeOff size={20} />
-                ) : (
-                  <Eye size={20} />
-                )}
-              </button>
+                placeholder="09xxxxxxxxx"
+                className="h-14 w-full rounded-2xl border border-white/20 bg-white/10 pr-12 pl-4 text-white placeholder:text-white/50 outline-none transition focus:border-amber-400"
+              />
 
             </div>
 
           </div>
-
-          {/* Remember */}
-
-          <div className="flex items-center justify-between">
-
-            <label className="flex items-center gap-2">
-
-              <input
-                type="checkbox"
-                name="remember"
-                checked={form.remember}
-                onChange={handleChange}
-              />
-
-              مرا به خاطر بسپار
-
-            </label>
-
-            <button
-              type="button"
-              className="text-sm text-amber-600 hover:underline"
-            >
-              فراموشی رمز؟
-            </button>
-
-          </div>
-
-          {/* Login */}
 
           <button
             type="submit"
-            className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-amber-500 text-lg font-black text-white transition hover:bg-amber-600"
+            disabled={loading}
+            className="flex h-14 w-full items-center justify-center gap-3 rounded-2xl bg-amber-500 text-lg font-black text-white transition hover:bg-amber-600 disabled:opacity-70"
           >
 
-            <LogIn size={20} />
+            {loading ? (
 
-            ورود
+              <>
+                <ShieldCheck size={20} />
+
+                در حال ارسال...
+
+              </>
+
+            ) : (
+
+              <>
+                <Send size={20} />
+
+                دریافت کد تایید
+              </>
+
+            )}
 
           </button>
 
         </form>
 
-        <div className="mt-8 text-center">
+        {/* Footer */}
 
-          <span className="text-slate-500">
+        <div className="border-t border-white/10 bg-black/10 px-10 py-6 text-center">
+
+          <span className="text-white/80">
             حساب کاربری ندارید؟
           </span>
 
           <Link
             to="/register"
-            className="mr-2 font-bold text-amber-600 hover:underline"
+            className="mr-2 font-bold text-amber-400 transition hover:text-amber-300"
           >
             ثبت نام
           </Link>
@@ -184,7 +153,6 @@ function Login() {
         </div>
 
       </div>
-
     </section>
   );
 }
