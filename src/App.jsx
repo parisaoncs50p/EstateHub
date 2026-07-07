@@ -1,4 +1,5 @@
 
+import AI from "./pages/AI";
 import AIAssistant from "./components/ai/AIAssistant";
 import { useState } from "react";
 
@@ -66,7 +67,10 @@ function App() {
           element={<VerifyCode />}
         />
 
-
+        <Route
+          path="/ai"
+          element={<AI />}
+        />
 
         <Route path="/contact" element={<Contact />} />
 

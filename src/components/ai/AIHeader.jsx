@@ -3,26 +3,27 @@ import { Sparkles } from "lucide-react";
 
 function AIHeader() {
   return (
-    <div className="flex items-center gap-4 border-b p-5">
+    <div className="rounded-3xl bg-gradient-to-r from-amber-500 to-orange-500 p-10 text-white shadow-xl">
 
-      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 shadow-lg">
+      <div className="flex items-center gap-5">
 
-        <Sparkles
-          size={28}
-          className="text-white"
-        />
+        <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-white/20">
 
-      </div>
+          <Sparkles size={42} />
 
-      <div>
+        </div>
 
-        <h2 className="text-xl font-black">
-          EstateHub AI
-        </h2>
+        <div>
 
-        <p className="text-sm text-slate-500">
-          دستیار هوشمند خرید و فروش ملک
-        </p>
+          <h1 className="text-5xl font-black">
+            EstateHub AI
+          </h1>
+
+          <p className="mt-3 text-lg text-white/90">
+            دستیار هوشمند خرید، فروش و اجاره ملک
+          </p>
+
+        </div>
 
       </div>
 
