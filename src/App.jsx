@@ -1,10 +1,6 @@
 
-import AI from "./pages/AI";
-import AIAssistant from "./components/ai/AIAssistant";
-import { useState } from "react";
 
-import AIButton from "./components/ai/AIButton";
-import AIChat from "./components/ai/AIChat";
+import AIAssistant from "./components/ai/AIAssistant";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
 import DashboardHome from "./pages/DashboardHome";
@@ -27,7 +23,7 @@ import AddProperty from "./pages/AddProperty";
 import NotFound from "./pages/NotFound";
 
 function App() {
-  const [openAI, setOpenAI] = useState(false);
+ 
   return (
     <>
       <Navbar />
@@ -67,10 +63,6 @@ function App() {
           element={<VerifyCode />}
         />
 
-        <Route
-          path="/ai"
-          element={<AI />}
-        />
 
         <Route path="/contact" element={<Contact />} />
 
@@ -99,14 +91,7 @@ function App() {
           element={<NotFound />}
         />
       </Routes>
-      <AIButton
-          onClick={() => setOpenAI(true)}
-        />
-
-        <AIChat
-          open={openAI}
-          onClose={() => setOpenAI(false)}
-        />
+      
       <Footer />
       <AIAssistant />
     </>

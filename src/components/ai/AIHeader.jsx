@@ -1,31 +1,57 @@
 
-import { Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  X,
+  Bot,
+} from "lucide-react";
 
-function AIHeader() {
+function AIHeader({
+  chatting,
+  onBack,
+  onClose,
+}) {
   return (
-    <div className="rounded-3xl bg-gradient-to-r from-amber-500 to-orange-500 p-10 text-white shadow-xl">
+    <div className="flex items-center justify-between bg-amber-500 px-5 py-4 text-white">
 
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-3">
 
-        <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-white/20">
+        {chatting && (
 
-          <Sparkles size={42} />
+          <button
+            onClick={onBack}
+            className="transition hover:scale-110"
+          >
+            <ArrowRight size={22} />
+          </button>
+
+        )}
+
+        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/20">
+
+          <Bot size={22} />
 
         </div>
 
         <div>
 
-          <h1 className="text-5xl font-black">
+          <h2 className="font-black">
             EstateHub AI
-          </h1>
+          </h2>
 
-          <p className="mt-3 text-lg text-white/90">
-            دستیار هوشمند خرید، فروش و اجاره ملک
+          <p className="text-xs opacity-80">
+            دستیار هوشمند املاک
           </p>
 
         </div>
 
       </div>
+
+      <button
+        onClick={onClose}
+        className="transition hover:rotate-90"
+      >
+        <X size={22} />
+      </button>
 
     </div>
   );

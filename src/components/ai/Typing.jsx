@@ -1,22 +1,22 @@
 
 function Typing() {
   return (
-    <div className="flex justify-start">
+    <div className="flex justify-start mb-5">
 
-      <div className="rounded-3xl bg-slate-100 px-6 py-4">
+      <div className="rounded-2xl rounded-bl-md bg-white px-5 py-4 shadow">
 
         <div className="flex gap-2">
 
-          <span className="h-2 w-2 animate-bounce rounded-full bg-slate-500"></span>
+          <span className="h-2 w-2 animate-bounce rounded-full bg-amber-500"></span>
 
           <span
-            className="h-2 w-2 animate-bounce rounded-full bg-slate-500"
-            style={{ animationDelay: ".2s" }}
+            className="h-2 w-2 animate-bounce rounded-full bg-amber-500"
+            style={{ animationDelay: "0.2s" }}
           ></span>
 
           <span
-            className="h-2 w-2 animate-bounce rounded-full bg-slate-500"
-            style={{ animationDelay: ".4s" }}
+            className="h-2 w-2 animate-bounce rounded-full bg-amber-500"
+            style={{ animationDelay: "0.4s" }}
           ></span>
 
         </div>

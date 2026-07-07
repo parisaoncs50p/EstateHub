@@ -11,7 +11,7 @@ function Logo() {
       <img
         src={logo}
         alt="EstateHub"
-        className="h-14 w-auto object-contain transition hover:scale-105"
+        className="h-14 w-auto object-contain transition hover:scale-115"
       />
     </Link>
   );

@@ -1,7 +1,7 @@
 
 import { Bot } from "lucide-react";
 
-function AIButton({ onClick }) {
+function AIButton({ open, onClick }) {
   return (
     <button
       onClick={onClick}
@@ -9,7 +9,7 @@ function AIButton({ onClick }) {
       fixed
       bottom-8
       left-8
-      z-[999]
+      z-[9999]
       flex
       h-16
       w-16
@@ -23,9 +23,13 @@ function AIButton({ onClick }) {
       duration-300
       hover:scale-110
       hover:bg-amber-600
+      active:scale-95
       "
     >
-      <Bot size={30} />
+      <Bot
+        size={30}
+        className={open ? "rotate-12 transition" : "transition"}
+      />
     </button>
   );
 }

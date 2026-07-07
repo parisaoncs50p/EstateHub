@@ -1,21 +1,28 @@
 
-function AIMessage({ message }) {
-  const ai = message.role === "assistant";
+function AIMessage({ role, text }) {
+  const isUser = role === "user";
 
   return (
     <div
-      className={`flex ${
-        ai ? "justify-start" : "justify-end"
+      className={`mb-5 flex ${
+        isUser ? "justify-end" : "justify-start"
       }`}
     >
       <div
-        className={`max-w-[80%] rounded-3xl px-5 py-4 leading-8 shadow ${
-          ai
-            ? "bg-white text-slate-800"
-            : "bg-amber-500 text-white"
-        }`}
+        className={`
+          max-w-[85%]
+          rounded-2xl
+          px-5
+          py-4
+          shadow
+          ${
+            isUser
+              ? "bg-amber-500 text-white rounded-br-md"
+              : "bg-white text-slate-700 rounded-bl-md"
+          }
+        `}
       >
-        {message.content}
+        {text}
       </div>
     </div>
   );
