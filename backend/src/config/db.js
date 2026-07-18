@@ -1,19 +1,13 @@
 
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const connectDB = async () => {
     try {
-        console.log('Connecting to MongoDB...');
-        console.log(process.env.MONGO_URI); // برای دیباگ - بعداً پاکش کن
-        
-        const conn = await mongoose.connect(process.env.MONGO_URI);
-        console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
+        console.log('🔄 Connecting to MongoDB...');
+        await mongoose.connect(process.env.MONGO_URI);
+        console.log('✅ MongoDB Connected Successfully!');
     } catch (error) {
-        console.error('❌ Full Error:');
-        console.error(error);
+        console.error('❌ MongoDB Connection Error:', error.message);
         process.exit(1);
     }
 };
